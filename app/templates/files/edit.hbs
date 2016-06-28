@@ -1,0 +1,31 @@
+{{#liquid-tether 
+  to="modal-dialog"
+  target="document.body"
+  targetModifier="visible"
+  attachment="middle center"
+  tetherClass="modal-dialog"
+  overlayClass="modal-backdrop"}}
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title">Edit File</h3>
+    </div>
+     
+    <div class="modal-body">
+      <ul class="nav nav-tabs">
+        {{#each tabs as |tab|}}
+          {{#link-to tab.route tagName="li"}}
+            <a>{{tab.name}}</a>
+          {{/link-to}}
+        {{/each}}
+      </ul>
+      <div class="tab-content">{{outlet}}</div>
+    </div>
+
+    <div class="modal-footer">
+      {{link-to 'Back' 'files'
+        tagName='button'
+        class="btn btn-primary"
+      }}
+    </div>
+  </div>
+{{/liquid-tether}}
